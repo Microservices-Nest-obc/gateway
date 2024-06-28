@@ -5,6 +5,8 @@ export const envVarsSchema = Joi.object({
   PORT: Joi.string().required(),
   PRODUCTS_MICROSERVICE_HOST: Joi.string().required(),
   PRODUCTS_MICROSERVICE_PORT: Joi.string().required(),
+  ORDERS_MICROSERVICE_HOST: Joi.string().required(),
+  ORDERS_MICROSERVICE_PORT: Joi.string().required(),
 }).unknown(true);
 
 const { error, value: envVars } = envVarsSchema.validate(process.env);
@@ -18,5 +20,9 @@ export const envs = {
   productsMicroservice: {
     host: envVars.PRODUCTS_MICROSERVICE_HOST,
     port: envVars.PRODUCTS_MICROSERVICE_PORT,
+  },
+  ordersMicroservice: {
+    host: envVars.ORDERS_MICROSERVICE_HOST,
+    port: envVars.ORDERS_MICROSERVICE_PORT,
   },
 };
